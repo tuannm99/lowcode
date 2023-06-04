@@ -9,24 +9,34 @@ export const HTTP_METHOD: Record<string, string> = {
   OPTION: 'option',
 };
 
-export const ACTION_TO_METHOD: Record<string, string> = {
+export const ACTION_TO_METHOD = {
+  createHandler: 'post',
+
   getByIdHandler: 'get',
   getHandler: 'get',
+
   updateHandler: 'post',
   updateByIdHandler: 'post',
+
   putHandler: 'put',
   putByIdHandler: 'put',
+
   deleteHandler: 'delete',
   deleteByIdHandler: 'delete',
 };
 
-export const HTTP_ACTION: Record<string, string> = {
+export const HTTP_ACTION = {
+  CREATE: 'createHandler',
+
   GET_BY_ID: 'getByIdHandler',
   GET: 'getHandler',
+
   UPDATE_BY_ID: 'updateByIdHandler',
   UPDATE: 'updateHandler',
+
   PUT: 'putHandler',
   PUT_BY_ID: 'putByIdHandler',
+
   DELETE: 'deleteHandler',
   DELETE_BY_ID: 'deleteByIdHandler',
 };

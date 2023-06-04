@@ -16,10 +16,9 @@ export const UserSchema: Schema = {
   },
 
   methods: [
+    HTTP_ACTION.CREATE,
     HTTP_ACTION.GET_BY_ID,
     HTTP_ACTION.GET,
-    // HTTP_ACTION.UPDATE_BY_ID,
-    HTTP_ACTION.UPDATE,
   ],
   // --- TODO: more
   // maybe init event, webhook, others here
@@ -35,10 +34,9 @@ export const PostSchema: Schema = {
     created_at: { type: DATA_TYPE.DATE },
   },
   methods: [
+    HTTP_ACTION.CREATE,
     HTTP_ACTION.GET_BY_ID,
     HTTP_ACTION.GET,
-    // HTTP_ACTION.UPDATE_BY_ID,
-    HTTP_ACTION.UPDATE,
   ],
 };
 

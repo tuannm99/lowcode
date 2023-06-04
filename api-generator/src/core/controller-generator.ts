@@ -53,7 +53,7 @@ const getByIdHandler = async (req: Req, res: Res) => {
   }
 };
 
-const postHandler = async (req: Req, res: Res) => {
+const createHandler = async (req: Req, res: Res) => {
   try {
     const { current, modelPool } = req.appData;
     const Model = modelPool[current].model;
@@ -76,11 +76,13 @@ const postHandler = async (req: Req, res: Res) => {
 
 // TODO - using command pattern for specific handler per api
 export const commonHandler = new Map();
+commonHandler.set('createHandler', createHandler);
+
 commonHandler.set('getHandler', getHandler);
 commonHandler.set('getByIdHandler', getByIdHandler);
-commonHandler.set('postHandler', postHandler);
-commonHandler.set('updateHandler', postHandler);
-commonHandler.set('getHandler', getHandler);
+
+// commonHandler.set('postHandler', postHandler);
+// commonHandler.set('updateHandler', postHandler);
 
 const commonMiddleware =
   (appData: AppData) => (req: Req, res: Res, next: NextFunc) => {
@@ -94,7 +96,7 @@ export const registerController = (router: Router, modelPool: ModelPool) => {
     const { methods, prefix } = schema;
 
     for (const action of methods) {
-      const method = ACTION_TO_METHOD[action];
+      const method: string = (ACTION_TO_METHOD as any)[action];
       (router as any)[method](
         `/${prefix}${action.includes('IdHandler') ? '/:id' : ''}`,
         commonMiddleware({ modelPool, current: prefix, schema, fields }),
