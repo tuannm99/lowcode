@@ -1,12 +1,12 @@
 import { TestDB } from 'core/__test__/schema';
-import { initModel } from 'core/model-generator';
 import mongoose from 'mongoose';
 import express from 'express';
-import { registerController } from 'core/controller-generator';
+import { registerController } from 'core/controller';
+import { getModelPool } from 'core/model';
 
 const run = async () => {
   try {
-    const testModelPool = initModel(TestDB);
+    const testModelPool = getModelPool(TestDB);
     await mongoose.connect('mongodb://127.0.0.1:27017/test');
     const app = express();
     const router = express.Router();
@@ -14,7 +14,7 @@ const run = async () => {
 
     app.use(express.json());
     app.use(getController);
-    app.listen(3000, () => console.log(3000));
+    app.listen(3000, () => console.log('App listion on: ', 3000));
   } catch (error) {
     console.error(error);
   }

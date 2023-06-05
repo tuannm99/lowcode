@@ -61,7 +61,6 @@ export interface SchemaSpecs {
 
 export interface Schema {
   name: string;
-  datasource?: string; // for mapping model and handling controller
   prefix: string;
   methods: Array<string>;
   specs: SchemaSpecs;
@@ -69,6 +68,7 @@ export interface Schema {
 
 export interface ApplicationDB {
   dbName: string;
+  datasource?: string; // for mapping model and handling controller
   schemas: Array<Schema>;
 }
 

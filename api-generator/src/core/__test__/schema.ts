@@ -15,11 +15,8 @@ export const UserSchema: Schema = {
     created_at: { type: DATA_TYPE.DATE },
   },
 
-  methods: [
-    HTTP_ACTION.CREATE,
-    HTTP_ACTION.GET_BY_ID,
-    HTTP_ACTION.GET,
-  ],
+  // TODO: Make this methods better
+  methods: [HTTP_ACTION.CREATE, HTTP_ACTION.GET_BY_ID, HTTP_ACTION.GET],
   // --- TODO: more
   // maybe init event, webhook, others here
 };
@@ -33,11 +30,7 @@ export const PostSchema: Schema = {
     content: { type: DATA_TYPE.STRING },
     created_at: { type: DATA_TYPE.DATE },
   },
-  methods: [
-    HTTP_ACTION.CREATE,
-    HTTP_ACTION.GET_BY_ID,
-    HTTP_ACTION.GET,
-  ],
+  methods: [HTTP_ACTION.CREATE, HTTP_ACTION.GET_BY_ID, HTTP_ACTION.GET],
 };
 
 export const TestDB: ApplicationDB = {
